@@ -1,0 +1,155 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#map {
+    width: 600px;
+    height: 400px;
+}
+
+.line {
+    fill: none;
+    stroke: #040d47;
+    stroke-width: 3;
+}
+
+.overlay {
+    fill: none;
+    pointer-events: all;
+  }
+
+  .dot {
+    fill: #62a7e0;
+    stroke: #fff;
+}
+  
+  .focus circle {
+  fill: none;
+  stroke: steelblue;
+}
+
+div.tooltip {	
+    font: 12px sans-serif;	
+    position: absolute;			
+    text-align: center;			
+    width: 130px;					
+    height: 35px;					
+    padding: 2px;	
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 10px;			
+    pointer-events: none;			
+}
+
+.citiesLineChart{
+    width: 830px;
+    height: 600px;
+    position: relative;
+    left: 650px;
+    bottom: 450px;
+}
+
+.stateName{
+    width: 500px;
+    height: 100px;
+    position: relative;
+    background-color: #b2e8e2;
+    left: 900px;
+    bottom: 1180px;
+}
+
+.stateText{
+    position: relative;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 50px;
+    top:20px;
+    font-weight: bold;
+    opacity: 0.5;
+}
+
+.projectDescription{
+    background-color:#b2e8e2; 
+    width: 1400px;
+    height: 250px;
+    position: relative;
+    left: 20px;;
+    bottom: 650px;
+}
+
+.descriptionHeader{
+    text-decoration: underline;
+}
+
+.densityInfo
+{ 
+    padding: 6px 8px; 
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white; background: rgba(255,255,255,0.8); 
+    box-shadow: 0 0 15px rgba(0,0,0,0.2); 
+    border-radius: 5px; 
+} 
+.densityInfo h4 
+{ 
+    margin: 0 0 5px;
+    color: #777; 
+}
+.densityInfoDiv 
+{ 
+    text-align: left; 
+    line-height: 18px; 
+    color: #555; 
+}
+.densityInfoDiv i 
+{ 
+    width: 18px; 
+    height: 18px; 
+    float: left; 
+    margin-right: 8px; 
+    opacity: 0.7; 
+}
+
+.stateArc{
+    font-size: 10pt;
+    font-family: Arial;
+    font-weight: 2px;
+    color: white;
+    text-orientation: sideways-right;
+}
+
+div.pieToolTip{
+    font: 12px sans-serif;	
+    position: absolute;			
+    text-align: center;			
+    width: 130px;					
+    height: 35px;					
+    padding: 2px;	
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 10px;			
+    pointer-events: none;		
+}
+
+.buttonPieChart{
+    position: relative;
+    width: 370px;
+    height: 40px;
+    left: 350px;
+    bottom: 1540px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size:15px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #b2e8e2;
+    border-style: solid;
+    border-color: #040d47;
+}
+
+.btnPieChartText{
+    position: relative;
+    bottom: 2px;
+}
+.buttonPieChart:hover{
+    background-color: aquamarine;
+    border-color: #62a7e0;
+}

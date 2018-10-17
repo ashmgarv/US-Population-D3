@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8">
+  	<title>US Population</title>
+  	<meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Cascaded Style Sheet-->
+      <link rel="stylesheet" href="uspopstyle.css">
+      <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico"/>
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+  </head>
+  <body>
+
+        <h1>Ashm Walia <br>10/15/2018 <br>Data Visualization Maps</h1>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+   <div class="" id="map"></div>
+   <svg class="citiesLineChart">
+
+   </svg>
+
+   <div class="stateName"></div>
+   <div class="projectDescription">
+        <h2 class="descriptionHeader">US Population</h2>
+        <p class="writeUp">
+            The <b>Map (Overview)</b> shows the <b>US States coloured according to their population density.</b>An <b>information scale on the bottom right</b> of the map shows a scale of the population density.
+            On hover on each state, a tootip displays <b>state name, population density and total population</b><br/><br/>
+            On clicking a state, a <b>Line Chart (Detail View)</b> is generated which shows population of 15 cities in the state, each circle represents a city. On hover, each circle displays a tooltip with <b>city name and population</b><br/><br/>
+        </p>
+   </div>
+   <div class="buttonPieChart" onclick="drawPieChart()">
+    <p class="btnPieChartText">
+        Click to get Pie Chart for State-wise Population
+    </p>
+  </div>
+    <!--JS-->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="map.js"></script>
+    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin="">
+    </script>
+    <script type="text/javascript">
+        var map = L.map('map').setView([37.8, -96], 4);
+
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox.light'
+        }).addTo(map);
+        
+        var densityInformation = L.control({position: 'bottomright'});
+
+        densityInformation.onAdd = function (map) {
+
+            var infoDiv = L.DomUtil.create('div', 'densityInfo densityInfoDiv'),
+                density = [0, 10, 20, 50, 100, 200, 500, 1000],
+                addColorStates = [],
+                start, end;
+
+            for (var i = 0; i < density.length; i++) {
+                start = density[i];
+                end = density[i + 1];
+
+                addColorStates.push(
+                    '<i style="background:' + getStateColor(start + 1) + '"></i> ' +
+                    start + (end ? '&ndash;' + end : '+'));
+            }
+
+            infoDiv.innerHTML = addColorStates.join('<br>');
+            return infoDiv;
+        };
+
+        densityInformation.addTo(map);
+
+
+        var geojson = L.geoJson(statesData, {style: styleTheMap, onEachFeature: mapEachState}).addTo(map);
+    </script>
+  </body>
+</html>
